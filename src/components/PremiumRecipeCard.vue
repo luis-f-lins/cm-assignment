@@ -1,39 +1,60 @@
 <template>
   <div class="rectangle">
     <div class="overlay"></div>
-    <img alt="Recipe Photo" src="../assets/image.svg" class="photo" />
+    <img alt="Recipe Photo" v-bind:src="getImgUrl(imageName)" class="photo" />
     <div class="recipeName">{{ formattedRecipeName }}</div>
-    <span v-for="(item, index) in stars" v-bind:key="index">
-      <img
-        v-if="item == 'unfilled'"
-        alt="Clock"
-        src="../assets/star-unfilled.svg"
-        class="star"
-      />
-      <img
-        v-if="item == 'filled'"
-        alt="Clock"
-        src="../assets/star-filled.svg"
-        class="star"
-      />
-      <img
-        v-if="item == 'half-filled'"
-        alt="Clock"
-        src="../assets/star-half-filled.svg"
-        class="star"
-      />
-    </span>
-    <!-- <div class="time">
-      <img alt="Clock" src="../assets/clock.svg" class="clock" />
-      <div class="timeText">{{ formattedTime }}</div>
-    </div> -->
+    <div class="ratings">
+      <span v-for="(item, index) in stars" v-bind:key="index">
+        <img
+          v-if="item == 'unfilled'"
+          alt="Clock"
+          src="../assets/star-unfilled.svg"
+          class="star"
+        />
+        <img
+          v-if="item == 'filled'"
+          alt="Clock"
+          src="../assets/star-filled.svg"
+          class="star"
+        />
+        <img
+          v-if="item == 'half-filled'"
+          alt="Clock"
+          src="../assets/star-half-filled.svg"
+          class="star"
+        />
+      </span>
+      <span class="ratingCount">{{ formattedRatingCount }}</span>
+    </div>
+    <div class="secondLine">
+      <div class="duration">
+        <img alt="Clock" src="../assets/clock.svg" class="clock" />
+        <div class="timeText">{{ formattedDuration }}</div>
+      </div>
+      <div class="duration">
+        <img alt="Calories" src="../assets/calories.svg" class="clock" />
+        <div class="timeText">{{ formattedCalories }}</div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "PremiumRecipeCard",
-  props: ["recipeName", "isPremium", "score", "ratings", "time", "calories"],
+  props: [
+    "imageName",
+    "recipeName",
+    "isPremium",
+    "score",
+    "ratingCount",
+    "duration",
+    "calories",
+    "carbs",
+    "proteins",
+    "fats",
+    "energyUnits"
+  ],
   data() {
     return {
       stars: []
@@ -46,11 +67,27 @@ export default {
     formattedRecipeName: function() {
       return this.recipeName;
     },
-    formattedTime: function() {
-      if (this.time < 60) {
-        return this.time + " min";
+    formattedDuration: function() {
+      if (this.duration < 60) {
+        return this.duration + "min";
       } else {
-        return Math.trunc(this.time / 60) + " h " + (this.time % 60) + " min";
+        return (
+          Math.trunc(this.duration / 60) + "h " + (this.duration % 60) + "min"
+        );
+      }
+    },
+    formattedRatingCount: function() {
+      if (this.ratingCount > 1 || this.ratingCount == 0) {
+        return this.ratingCount + " ratings";
+      } else {
+        return this.ratingCount + " rating";
+      }
+    },
+    formattedCalories: function() {
+      if (!this.energyUnits || this.energyUnits == "calories") {
+        return this.calories + " calories";
+      } else {
+        return this.calories * 4.184 + " kJ";
       }
     }
   },
@@ -69,6 +106,10 @@ export default {
 
       this.stars = output;
       return null;
+    },
+    getImgUrl(imageName) {
+      var images = require.context("../assets/", false, /\.png$/);
+      return images("./" + imageName + ".png");
     }
   }
 };
@@ -117,21 +158,45 @@ export default {
   margin-top: 8px;
 }
 
-.time {
+.duration {
   display: flex;
   align-items: center;
+  margin-left: 16px;
 }
 
 .timeText {
   font-family: "proxima-nova";
   font-size: 12px;
   line-height: 14px;
+  margin-left: 5px;
   color: #393c40;
 }
 
 .clock {
   width: 16px;
   height: 16px;
+}
+.ratings {
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+  margin-top: 8px;
+}
+
+.ratingCount {
+  font-family: "proxima-nova";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  color: #1ca677;
+  margin-left: 8px;
+}
+
+.secondLine {
+  display: flex;
+  align-content: space-between;
+  margin-top: 4px;
 }
 </style>
 

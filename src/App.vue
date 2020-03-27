@@ -9,9 +9,12 @@
 
       <div class="premium-recipe-wrapper">
         <PremiumRecipeCard
+          v-bind:imageName="this.imageName"
           v-bind:recipeName="this.recipeName"
-          v-bind:time="this.time"
+          v-bind:duration="this.duration"
+          v-bind:ratingCount="this.ratingCount"
           v-bind:score="this.score"
+          v-bind:calories="this.calories"
         />
       </div>
     </div>
@@ -28,9 +31,17 @@ export default {
   },
   data: function() {
     return {
+      imageName: "image",
       recipeName: "Low Carb Thai Chicken Curry With Coconut Cauliflower Rice",
-      time: "135",
-      score: 3.5
+      duration: "24",
+      score: 3.5,
+      ratingCount: 200,
+      calories: 489,
+      carbs: 20,
+      proteins: 16,
+      fats: 6,
+      isPremium: true,
+      energyUnits: "calories"
     };
   }
 };
