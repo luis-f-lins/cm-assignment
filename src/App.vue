@@ -8,7 +8,11 @@
       <p>See the README file for assignment requirements.</p>
 
       <div class="premium-recipe-wrapper">
-        <PremiumRecipeCard />
+        <PremiumRecipeCard
+          v-bind:recipeName="this.recipeName"
+          v-bind:time="this.time"
+          v-bind:score="this.score"
+        />
       </div>
     </div>
   </div>
@@ -21,6 +25,13 @@ export default {
   name: "App",
   components: {
     PremiumRecipeCard
+  },
+  data: function() {
+    return {
+      recipeName: "Low Carb Thai Chicken Curry With Coconut Cauliflower Rice",
+      time: "135",
+      score: 3.5
+    };
   }
 };
 </script>
