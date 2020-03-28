@@ -9,16 +9,17 @@
 
       <div class="premium-recipe-wrapper">
         <PremiumRecipeCard
-          v-bind:imageName="this.imageName"
-          v-bind:recipeName="this.recipeName"
-          v-bind:duration="this.duration"
-          v-bind:ratingCount="this.ratingCount"
-          v-bind:isHearted="this.isHearted"
-          v-bind:score="this.score"
           v-bind:calories="this.calories"
           v-bind:carbs="this.carbs"
-          v-bind:proteins="this.proteins"
+          v-bind:duration="this.duration"
+          v-bind:energyUnits="this.energyUnits"
           v-bind:fats="this.fats"
+          v-bind:imageName="this.imageName"
+          v-bind:isHearted="this.isHearted"
+          v-bind:proteins="this.proteins"
+          v-bind:ratingCount="this.ratingCount"
+          v-bind:recipeName="this.recipeName"
+          v-bind:score="this.score"
         />
       </div>
     </div>
@@ -35,18 +36,17 @@ export default {
   },
   data: function() {
     return {
-      imageName: "image",
-      recipeName: "Low Carb Thai Chicken Curry With Coconut Cauliflower Rice",
-      duration: "24",
-      score: 3.5,
-      ratingCount: 200,
       calories: 489,
+      imageName: "image",
       carbs: 20,
-      proteins: 16,
-      fats: 6,
-      isPremium: true,
+      duration: 24,
       energyUnits: "calories",
-      isHearted: false
+      fats: 6,
+      isHearted: false,
+      proteins: 16,
+      ratingCount: 200,
+      recipeName: "Low Carb Thai Chicken Curry With Coconut Cauliflower Rice",
+      score: 3.5
     };
   }
 };

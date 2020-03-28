@@ -1,9 +1,9 @@
 <template>
   <div class="nutritionalValue">
     <img alt="carbs" src="../assets/carbs.svg" class="circle" />
-    <span class="nutritionalValueText">{{ carbs }} g</span>
+    <span class="nutritionalValueText">{{ carbs }}g</span>
     <img alt="proteins" src="../assets/proteins.svg" class="circle" />
-    <span class="nutritionalValueText">{{ proteins }} g</span>
+    <span class="nutritionalValueText">{{ proteins }}g</span>
     <img alt="fats" src="../assets/fats.svg" class="circle" />
     <span class="nutritionalValueText">{{ fats }}g</span>
   </div>
@@ -12,21 +12,20 @@
 <script>
 export default {
   name: "NutritionalValue",
-  props: ["carbs", "proteins", "fats"]
+  props: ["carbs", "fats", "proteins"]
 };
 </script>
 
 <style>
 .circle {
-  width: 6px;
   height: 6px;
   margin-left: 8px;
+  width: 6px;
 }
 
 .nutritionalValue {
-  margin-left: 40px;
-  display: flex;
   align-items: center;
+  display: flex;
 }
 
 .nutritionalValueText {

@@ -1,12 +1,12 @@
 <template>
   <div class="durationCalorieInfo">
-    <div class="duration">
-      <img alt="Clock" src="../assets/clock.svg" class="clock" />
-      <div class="timeText">{{ formattedDuration }}</div>
+    <div class="info">
+      <img alt="Duration" class="svg" src="../assets/clock.svg" />
+      <div class="infoText">{{ formattedDuration }}</div>
     </div>
-    <div class="duration">
-      <img alt="Calories" src="../assets/calories.svg" class="clock" />
-      <div class="timeText">{{ formattedCalories }}</div>
+    <div class="info">
+      <img alt="Calories" class="svg" src="../assets/calories.svg" />
+      <div class="infoText">{{ formattedCalories }}</div>
     </div>
   </div>
 </template>
@@ -14,13 +14,14 @@
 <script>
 export default {
   name: "DurationCalorieInfo",
-  props: ["duration", "calories"],
+  props: ["calories", "duration", "energyUnits"],
   computed: {
     formattedCalories: function() {
+      console.log(this.energyUnits);
       if (!this.energyUnits || this.energyUnits == "calories") {
         return this.calories + " calories";
       } else {
-        return this.calories * 4.184 + " kJ";
+        return Math.round(this.calories * 4.184) + " kJ";
       }
     },
     formattedDuration: function() {
@@ -37,26 +38,26 @@ export default {
 </script>
 
 <style>
-.duration {
-  display: flex;
-  align-items: center;
-  margin-left: 16px;
-}
-
 .durationCalorieInfo {
   display: flex;
 }
 
-.timeText {
+.info {
+  align-items: center;
+  display: flex;
+}
+
+.infoText {
+  color: #393c40;
   font-family: "proxima-nova";
   font-size: 12px;
   line-height: 14px;
   margin-left: 5px;
-  color: #393c40;
+  margin-right: 15px;
 }
 
-.clock {
-  width: 16px;
+.svg {
   height: 16px;
+  width: 16px;
 }
 </style>
