@@ -52,21 +52,23 @@
         <img alt="Calories" src="../assets/calories.svg" class="clock" />
         <div class="timeText">{{ formattedCalories }}</div>
       </div>
-      <div class="nutritionalValue">
-        <img alt="carbs" src="../assets/carbs.svg" class="circle" />
-        <span class="nutritionalValueText">{{ carbs }} g</span>
-        <img alt="proteins" src="../assets/proteins.svg" class="circle" />
-        <span class="nutritionalValueText">{{ proteins }} g</span>
-        <img alt="fats" src="../assets/fats.svg" class="circle" />
-        <span class="nutritionalValueText">{{ fats }}g</span>
-      </div>
+      <NutritionalValue
+        v-bind:fats="this.fats"
+        v-bind:carbs="this.carbs"
+        v-bind:proteins="this.proteins"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import NutritionalValue from "./NutritionalValue.vue";
+
 export default {
   name: "PremiumRecipeCard",
+  components: {
+    NutritionalValue
+  },
   props: [
     "imageName",
     "recipeName",
@@ -179,10 +181,15 @@ export default {
   font-weight: bold;
   font-size: 18px;
   text-align: left;
+  line-height: 20px;
   color: #0c0c0a;
   margin-right: 16px;
   margin-left: 16px;
   margin-top: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
 }
 
 .duration {
