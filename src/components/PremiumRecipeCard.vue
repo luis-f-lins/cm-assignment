@@ -79,7 +79,7 @@ export default {
   },
   methods: {
     getImgUrl(imageName) {
-      var images = require.context("../assets/", false, /\.png$/);
+      var images = require("../lib/assets-loader");
       return images("./" + imageName + ".png");
     }
   }

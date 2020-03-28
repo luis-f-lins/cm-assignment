@@ -1,10 +1,10 @@
 <template>
   <div class="timeCalorieInfo">
-    <div class="info" v-if="time">
+    <div class="info" v-if="time" id="time">
       <img alt="Time" class="svg" src="../assets/clock.svg" />
       <div class="infoText">{{ formattedTime }}</div>
     </div>
-    <div class="info" v-if="calories">
+    <div class="info" v-if="calories" id="calories">
       <img alt="Calories" class="svg" src="../assets/calories.svg" />
       <div class="infoText">{{ formattedCalories }}</div>
     </div>
