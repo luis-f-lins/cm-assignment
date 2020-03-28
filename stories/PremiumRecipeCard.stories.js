@@ -20,7 +20,6 @@ export const Default = () => ({
   props: {
     calories: { default: number("Calories", 489) },
     carbs: { default: number("Carbs", 20) },
-    duration: { default: number("Duration of recipe", 24) },
     energyUnits: {
       default: radios("Energy unit", ["calories", "kilojaules"], "calories")
     },
@@ -35,14 +34,15 @@ export const Default = () => ({
         "Low Carb Thai Chicken Curry With Coconut Cauliflower Rice"
       )
     },
-    score: { default: number("Recipe score", 3.5) }
+    score: { default: number("Recipe score", 3.5) },
+    time: { default: number("Prep time (in minutes)", 24) }
   },
   template: `
   <PremiumRecipeCard
   @click="action"
   v-bind:calories="calories"
   v-bind:carbs="carbs"
-  v-bind:duration="duration"
+  v-bind:time="time"
   v-bind:energyUnits="energyUnits"
   v-bind:fats="fats"
   v-bind:imageName="imageName"

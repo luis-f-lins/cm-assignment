@@ -21,7 +21,7 @@
       v-if="isHearted"
     />
     <img alt="Recipe Photo" class="photo" v-bind:src="getImgUrl(imageName)" />
-    <div class="recipeName">{{ formattedRecipeName }}</div>
+    <div class="recipeName">{{ recipeName }}</div>
     <Ratings
       class="ratingContainer"
       v-bind:ratingCount="this.ratingCount"
@@ -29,9 +29,9 @@
       v-bind:showRatingCount="true"
     />
     <div class="infoLine">
-      <DurationCalorieInfo
+      <TimeCalorieInfo
         v-bind:calories="this.calories"
-        v-bind:duration="this.duration"
+        v-bind:time="this.time"
         v-bind:energyUnits="this.energyUnits"
       />
       <NutritionalValue
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import DurationCalorieInfo from "./DurationCalorieInfo.vue";
+import TimeCalorieInfo from "./TimeCalorieInfo.vue";
 import NutritionalValue from "./NutritionalValue.vue";
 import PremiumRectangle from "./PremiumRectangle.vue";
 import Ratings from "./Ratings.vue";
@@ -53,7 +53,7 @@ import Ratings from "./Ratings.vue";
 export default {
   name: "PremiumRecipeCard",
   components: {
-    DurationCalorieInfo,
+    TimeCalorieInfo,
     NutritionalValue,
     PremiumRectangle,
     Ratings
@@ -61,7 +61,6 @@ export default {
   props: [
     "calories",
     "carbs",
-    "duration",
     "energyUnits",
     "fats",
     "imageName",
@@ -69,18 +68,14 @@ export default {
     "proteins",
     "ratingCount",
     "recipeName",
-    "score"
+    "score",
+    "time"
   ],
   data() {
     return {
       hover: false,
       stars: []
     };
-  },
-  computed: {
-    formattedRecipeName: function() {
-      return this.recipeName;
-    }
   },
   methods: {
     getImgUrl(imageName) {
@@ -152,15 +147,6 @@ export default {
   position: absolute;
 }
 
-.rectangle {
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0px 13px 35px rgba(0, 30, 47, 0.1);
-  margin: auto;
-  height: 318px;
-  width: 343px;
-}
-
 .ratingContainer {
   margin-left: 16px;
   margin-top: 10px;
@@ -178,9 +164,18 @@ export default {
   line-height: 20px;
   margin-right: 16px;
   margin-left: 16px;
-  margin-top: 4px;
+  margin-top: 5px;
   overflow: hidden;
   text-align: left;
+}
+
+.rectangle {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 13px 35px rgba(0, 30, 47, 0.1);
+  margin: auto;
+  height: 318px;
+  width: 343px;
 }
 
 .rectangle:hover {

@@ -11,7 +11,7 @@
         <PremiumRecipeCard
           v-bind:calories="this.calories"
           v-bind:carbs="this.carbs"
-          v-bind:duration="this.duration"
+          v-bind:time="this.time"
           v-bind:energyUnits="this.energyUnits"
           v-bind:fats="this.fats"
           v-bind:imageName="this.imageName"
@@ -39,7 +39,7 @@ export default {
       calories: 489,
       imageName: "image",
       carbs: 20,
-      duration: 24,
+      time: 24,
       energyUnits: "calories",
       fats: 6,
       isHearted: false,

@@ -1,8 +1,8 @@
 <template>
-  <div class="durationCalorieInfo">
-    <div class="info" v-if="duration">
-      <img alt="Duration" class="svg" src="../assets/clock.svg" />
-      <div class="infoText">{{ formattedDuration }}</div>
+  <div class="timeCalorieInfo">
+    <div class="info" v-if="time">
+      <img alt="Time" class="svg" src="../assets/clock.svg" />
+      <div class="infoText">{{ formattedTime }}</div>
     </div>
     <div class="info" v-if="calories">
       <img alt="Calories" class="svg" src="../assets/calories.svg" />
@@ -13,8 +13,8 @@
 
 <script>
 export default {
-  name: "DurationCalorieInfo",
-  props: ["calories", "duration", "energyUnits"],
+  name: "TimeCalorieInfo",
+  props: ["calories", "time", "energyUnits"],
   computed: {
     formattedCalories: function() {
       if (!this.energyUnits || this.energyUnits == "calories") {
@@ -23,13 +23,11 @@ export default {
         return Math.round(this.calories * 4.184) + " kJ";
       }
     },
-    formattedDuration: function() {
-      if (this.duration < 60) {
-        return this.duration + "min";
+    formattedTime: function() {
+      if (this.time < 60) {
+        return this.time + "min";
       } else {
-        return (
-          Math.trunc(this.duration / 60) + "h " + (this.duration % 60) + "min"
-        );
+        return Math.trunc(this.time / 60) + "h " + (this.time % 60) + "min";
       }
     }
   }
@@ -37,7 +35,7 @@ export default {
 </script>
 
 <style>
-.durationCalorieInfo {
+.timeCalorieInfo {
   display: flex;
 }
 
