@@ -78,10 +78,8 @@ export default {
   margin: auto;
 }
 
-/** Remove these styles when done */
 .premium-recipe-wrapper {
-  margin-top: 100px;
-  border: 2px dashed red;
-  padding: 16px;
+  margin-top: 50px;
+  margin-bottom: 100px;
 }
 </style>
