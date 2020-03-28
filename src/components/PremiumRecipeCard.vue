@@ -1,6 +1,23 @@
 <template>
-  <div class="rectangle">
+  <div class="rectangle" @mouseover="hover = true" @mouseleave="hover = false">
+    <div v-if="hover" class="hoverOverlay"></div>
     <div class="overlay"></div>
+    <div class="premiumRectangle">
+      <img alt="Clock" src="../assets/trophy.svg" class="premiumTrophy" />
+      <div class="premiumText">Premium Recipe</div>
+    </div>
+    <img
+      v-if="!isHearted"
+      alt="Heart Unfilled"
+      src="../assets/heart-unfilled.svg"
+      class="heart"
+    />
+    <img
+      v-if="isHearted"
+      alt="Heart Filled"
+      src="../assets/heart-filled.svg"
+      class="heart"
+    />
     <img alt="Recipe Photo" v-bind:src="getImgUrl(imageName)" class="photo" />
     <div class="recipeName">{{ formattedRecipeName }}</div>
     <div class="ratings">
@@ -35,6 +52,14 @@
         <img alt="Calories" src="../assets/calories.svg" class="clock" />
         <div class="timeText">{{ formattedCalories }}</div>
       </div>
+      <div class="nutritionalValue">
+        <img alt="carbs" src="../assets/carbs.svg" class="circle" />
+        <span class="nutritionalValueText">{{ carbs }} g</span>
+        <img alt="proteins" src="../assets/proteins.svg" class="circle" />
+        <span class="nutritionalValueText">{{ proteins }} g</span>
+        <img alt="fats" src="../assets/fats.svg" class="circle" />
+        <span class="nutritionalValueText">{{ fats }}g</span>
+      </div>
     </div>
   </div>
 </template>
@@ -46,6 +71,7 @@ export default {
     "imageName",
     "recipeName",
     "isPremium",
+    "isHearted",
     "score",
     "ratingCount",
     "duration",
@@ -57,7 +83,8 @@ export default {
   ],
   data() {
     return {
-      stars: []
+      stars: [],
+      hover: false
     };
   },
   mounted: function() {
@@ -155,7 +182,7 @@ export default {
   color: #0c0c0a;
   margin-right: 16px;
   margin-left: 16px;
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 .duration {
@@ -180,7 +207,7 @@ export default {
   display: flex;
   align-items: center;
   margin-left: 16px;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 .ratingCount {
@@ -196,7 +223,72 @@ export default {
 .secondLine {
   display: flex;
   align-content: space-between;
-  margin-top: 4px;
+  margin-top: 6px;
+}
+
+.circle {
+  width: 6px;
+  height: 6px;
+  margin-left: 8px;
+}
+
+.nutritionalValue {
+  margin-left: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.nutritionalValueText {
+  font-family: "proxima-nova";
+  font-size: 12px;
+  line-height: 14px;
+  margin-left: 4px;
+  color: #393c40;
+}
+
+.premiumRectangle {
+  position: absolute;
+  width: 117px;
+  height: 20px;
+  background: #ffffff;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  margin-top: 172px;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.premiumText {
+  font-family: "proxima-nova";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: -0.2px;
+  color: rgba(255, 255, 255, 1);
+  margin-left: 4px;
+}
+
+.premiumTrophy {
+  width: 12px;
+  height: 12px;
+}
+
+.heart {
+  position: absolute;
+  margin-top: 16px;
+  margin-left: 304px;
+}
+
+.hoverOverlay {
+  position: absolute;
+  width: 343px;
+  height: 200px;
+  background: #ffffff;
+  opacity: 0.2;
+  border-radius: 12px;
 }
 </style>
 

@@ -13,8 +13,12 @@
           v-bind:recipeName="this.recipeName"
           v-bind:duration="this.duration"
           v-bind:ratingCount="this.ratingCount"
+          v-bind:isHearted="this.isHearted"
           v-bind:score="this.score"
           v-bind:calories="this.calories"
+          v-bind:carbs="this.carbs"
+          v-bind:proteins="this.proteins"
+          v-bind:fats="this.fats"
         />
       </div>
     </div>
@@ -41,7 +45,8 @@ export default {
       proteins: 16,
       fats: 6,
       isPremium: true,
-      energyUnits: "calories"
+      energyUnits: "calories",
+      isHearted: false
     };
   }
 };
