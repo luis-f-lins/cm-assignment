@@ -44,14 +44,10 @@
       <span class="ratingCount">{{ formattedRatingCount }}</span>
     </div>
     <div class="secondLine">
-      <div class="duration">
-        <img alt="Clock" src="../assets/clock.svg" class="clock" />
-        <div class="timeText">{{ formattedDuration }}</div>
-      </div>
-      <div class="duration">
-        <img alt="Calories" src="../assets/calories.svg" class="clock" />
-        <div class="timeText">{{ formattedCalories }}</div>
-      </div>
+      <DurationCalorieInfo
+        v-bind:calories="this.calories"
+        v-bind:duration="this.duration"
+      />
       <NutritionalValue
         v-bind:fats="this.fats"
         v-bind:carbs="this.carbs"
@@ -63,11 +59,13 @@
 
 <script>
 import NutritionalValue from "./NutritionalValue.vue";
+import DurationCalorieInfo from "./DurationCalorieInfo.vue";
 
 export default {
   name: "PremiumRecipeCard",
   components: {
-    NutritionalValue
+    NutritionalValue,
+    DurationCalorieInfo
   },
   props: [
     "imageName",
@@ -96,27 +94,11 @@ export default {
     formattedRecipeName: function() {
       return this.recipeName;
     },
-    formattedDuration: function() {
-      if (this.duration < 60) {
-        return this.duration + "min";
-      } else {
-        return (
-          Math.trunc(this.duration / 60) + "h " + (this.duration % 60) + "min"
-        );
-      }
-    },
     formattedRatingCount: function() {
       if (this.ratingCount > 1 || this.ratingCount == 0) {
         return this.ratingCount + " ratings";
       } else {
         return this.ratingCount + " rating";
-      }
-    },
-    formattedCalories: function() {
-      if (!this.energyUnits || this.energyUnits == "calories") {
-        return this.calories + " calories";
-      } else {
-        return this.calories * 4.184 + " kJ";
       }
     }
   },
@@ -192,24 +174,6 @@ export default {
   -webkit-box-orient: vertical;
 }
 
-.duration {
-  display: flex;
-  align-items: center;
-  margin-left: 16px;
-}
-
-.timeText {
-  font-family: "proxima-nova";
-  font-size: 12px;
-  line-height: 14px;
-  margin-left: 5px;
-  color: #393c40;
-}
-
-.clock {
-  width: 16px;
-  height: 16px;
-}
 .ratings {
   display: flex;
   align-items: center;
