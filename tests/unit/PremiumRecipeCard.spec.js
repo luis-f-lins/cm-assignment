@@ -4,7 +4,7 @@ import PremiumRecipeCard from "../../src/components/PremiumRecipeCard";
 jest.mock("../../src/lib/assets-loader", () => () => "image");
 
 describe("PremiumRecipeCard.vue", () => {
-  const recipeName =
+  const recipeTitle =
     "Low Carb Thai Chicken Curry With Coconut Cauliflower Rice";
 
   const wrapper = mount(PremiumRecipeCard, {
@@ -18,7 +18,7 @@ describe("PremiumRecipeCard.vue", () => {
       isHearted: false,
       proteins: 16,
       ratingCount: 200,
-      recipeName,
+      recipeTitle,
       score: 3.5
     }
   });
@@ -29,7 +29,7 @@ describe("PremiumRecipeCard.vue", () => {
     expect(wrapper.find(".overlay").exists()).toBe(true);
     expect(wrapper.find(".heart").exists()).toBe(true);
     expect(wrapper.find(".photo").exists()).toBe(true);
-    expect(wrapper.find(".recipeName").text()).toBe(recipeName);
+    expect(wrapper.find(".recipeTitle").text()).toBe(recipeTitle);
     expect(wrapper.find(".ratingContainer").exists()).toBe(true);
     expect(wrapper.find(".timeCalorieInfo").exists()).toBe(true);
     expect(wrapper.find(".nutritionalValueContainer").exists()).toBe(true);

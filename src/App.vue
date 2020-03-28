@@ -18,7 +18,7 @@
           v-bind:isHearted="this.isHearted"
           v-bind:proteins="this.proteins"
           v-bind:ratingCount="this.ratingCount"
-          v-bind:recipeName="this.recipeName"
+          v-bind:recipeTitle="this.recipeTitle"
           v-bind:score="this.score"
         />
       </div>
@@ -45,7 +45,7 @@ export default {
       isHearted: false,
       proteins: 16,
       ratingCount: 200,
-      recipeName: "Low Carb Thai Chicken Curry With Coconut Cauliflower Rice",
+      recipeTitle: "Low Carb Thai Chicken Curry With Coconut Cauliflower Rice",
       score: 3.5
     };
   }

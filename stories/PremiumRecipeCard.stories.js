@@ -28,7 +28,7 @@ export const Default = () => ({
     isHearted: { default: boolean("Hearted", false) },
     proteins: { default: number("Proteins", 16) },
     ratingCount: { default: number("Rating count", 200) },
-    recipeName: {
+    recipeTitle: {
       default: text(
         "Recipe name",
         "Low Carb Thai Chicken Curry With Coconut Cauliflower Rice"
@@ -49,7 +49,7 @@ export const Default = () => ({
   v-bind:isHearted="isHearted"
   v-bind:proteins="proteins"
   v-bind:ratingCount="ratingCount"
-  v-bind:recipeName="recipeName"
+  v-bind:recipeTitle="recipeTitle"
   v-bind:score="score"
 />`,
   methods: { action: action("clicked") }

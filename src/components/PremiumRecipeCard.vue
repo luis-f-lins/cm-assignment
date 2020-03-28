@@ -21,7 +21,7 @@
       v-if="isHearted"
     />
     <img alt="Recipe Photo" class="photo" v-bind:src="getImgUrl(imageName)" />
-    <div class="recipeName">{{ recipeName }}</div>
+    <div class="recipeTitle">{{ recipeTitle }}</div>
     <Ratings
       class="ratingContainer"
       v-bind:ratingCount="this.ratingCount"
@@ -67,7 +67,7 @@ export default {
     "isHearted",
     "proteins",
     "ratingCount",
-    "recipeName",
+    "recipeTitle",
     "score",
     "time"
   ],
@@ -152,7 +152,7 @@ export default {
   margin-top: 10px;
 }
 
-.recipeName {
+.recipeTitle {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   color: #0c0c0a;
