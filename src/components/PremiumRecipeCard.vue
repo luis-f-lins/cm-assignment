@@ -1,5 +1,10 @@
 <template>
-  <div class="rectangle" @mouseover="hover = true" @mouseleave="hover = false">
+  <div
+    class="rectangle"
+    @click="$emit('click')"
+    @mouseover="hover = true"
+    @mouseleave="hover = false"
+  >
     <div class="hoverOverlay" v-if="hover"></div>
     <div class="overlay"></div>
     <PremiumRectangle class="premiumRectangleContainer" />
@@ -10,7 +15,7 @@
       v-if="!isHearted"
     />
     <img
-      class="heart"
+      class="filledHeart"
       alt="Heart Filled"
       src="../assets/heart-filled.svg"
       v-if="isHearted"
@@ -87,11 +92,17 @@ export default {
 </script>
 
 <style>
+.filledHeart {
+  margin-left: 307px;
+  margin-top: 17px;
+  position: absolute;
+}
+
 .infoLine {
   align-content: space-between;
   display: flex;
   margin-left: 15px;
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 .heart {
@@ -110,7 +121,8 @@ export default {
 }
 
 .nutritionalValueContainer {
-  margin-left: 30px;
+  margin-left: 200px;
+  position: absolute;
 }
 
 .overlay {

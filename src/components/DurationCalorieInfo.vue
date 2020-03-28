@@ -1,10 +1,10 @@
 <template>
   <div class="durationCalorieInfo">
-    <div class="info">
+    <div class="info" v-if="duration">
       <img alt="Duration" class="svg" src="../assets/clock.svg" />
       <div class="infoText">{{ formattedDuration }}</div>
     </div>
-    <div class="info">
+    <div class="info" v-if="calories">
       <img alt="Calories" class="svg" src="../assets/calories.svg" />
       <div class="infoText">{{ formattedCalories }}</div>
     </div>
@@ -17,7 +17,6 @@ export default {
   props: ["calories", "duration", "energyUnits"],
   computed: {
     formattedCalories: function() {
-      console.log(this.energyUnits);
       if (!this.energyUnits || this.energyUnits == "calories") {
         return this.calories + " calories";
       } else {

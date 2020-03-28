@@ -2,20 +2,13 @@
   <div class="ratings">
     <span v-bind:key="index" v-for="(item, index) in stars">
       <img
-        alt="Clock"
-        class="star"
+        alt="Star"
         src="../assets/star-unfilled.svg"
         v-if="item == 'unfilled'"
       />
+      <img alt="Star" src="../assets/star-filled.svg" v-if="item == 'filled'" />
       <img
-        alt="Clock"
-        class="star"
-        src="../assets/star-filled.svg"
-        v-if="item == 'filled'"
-      />
-      <img
-        alt="Clock"
-        class="star"
+        alt="Star"
         src="../assets/star-half-filled.svg"
         v-if="item == 'half-filled'"
       />
@@ -33,6 +26,11 @@ export default {
   mounted: function() {
     this.setStars(this.score);
   },
+  watch: {
+    score: function(score) {
+      this.setStars(score);
+    }
+  },
   data() {
     return {
       stars: []
@@ -49,6 +47,11 @@ export default {
   },
   methods: {
     setStars: function(score) {
+      if (score > 5) {
+        this.stars = ["filled", "filled", "filled", "filled", "filled"];
+        return;
+      }
+
       let rating = Math.round(score * 2) / 2;
       let output = [];
 
