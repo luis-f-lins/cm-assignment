@@ -51,6 +51,7 @@ import TimeCalorieInfo from "./TimeCalorieInfo.vue";
 import NutritionalValue from "./NutritionalValue.vue";
 import PremiumRectangle from "./PremiumRectangle.vue";
 import Ratings from "./Ratings.vue";
+import getImgUrl from "../lib/assets-loader.js";
 
 export default {
   name: "PremiumRecipeCard",
@@ -79,10 +80,7 @@ export default {
     };
   },
   methods: {
-    getImgUrl(imageName) {
-      var images = require("../lib/assets-loader");
-      return images("./" + imageName + ".png");
-    }
+    getImgUrl: getImgUrl
   }
 };
 </script>

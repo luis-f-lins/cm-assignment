@@ -1,5 +1,11 @@
 <template>
-  <div class="card" @click="$emit('click')">
+  <div
+    class="card"
+    @click="$emit('click')"
+    @mouseover="hover = true"
+    @mouseleave="hover = false"
+  >
+    <div class="hover-overlay" v-if="hover"></div>
     <div class="overlay"></div>
     <img alt="Recipe Photo" class="photo" v-bind:src="getImgUrl(imageName)" />
     <div class="text">RECIPE OF THE DAY</div>
@@ -32,9 +38,10 @@
 </template>
 
 <script>
-import TimeCalorieInfo from "./TimeCalorieInfo.vue";
 import NutritionalValue from "./NutritionalValue.vue";
 import Ratings from "./Ratings.vue";
+import TimeCalorieInfo from "./TimeCalorieInfo.vue";
+import getImgUrl from "../lib/assets-loader.js";
 
 export default {
   name: "RecipeOfTheDay",
@@ -56,10 +63,7 @@ export default {
     };
   },
   methods: {
-    getImgUrl(imageName) {
-      var images = require("../lib/assets-loader");
-      return images("./" + imageName + ".png");
-    }
+    getImgUrl: getImgUrl
   }
 };
 </script>
@@ -70,32 +74,45 @@ export default {
   border-radius: 12px;
   margin: auto;
   height: 218px;
-  width: 375px;
   position: relative;
+  width: 375px;
 }
 
 .card:hover {
   cursor: pointer;
-  background: #ffffff;
-  border-radius: 12px;
-  opacity: 0.9;
 }
 
-.overlay {
-  position: absolute;
-  height: 218px;
-  width: 375px;
-  background: #000000;
-  background-blend-mode: multiply;
-  mix-blend-mode: normal;
-  opacity: 0.45;
+.hover-overlay {
+  background: #ffffff;
   border-radius: 12px;
+  height: 218px;
+  opacity: 0.2;
+  position: absolute;
+  width: 375px;
+}
+
+.learn-more-button {
+  float: right;
+  position: relative;
+  right: 20px;
+  top: -160px;
 }
 
 .nutritional-value-container {
+  left: 20px;
   position: relative;
   top: -135px;
-  left: 20px;
+}
+
+.overlay {
+  background: #000000;
+  background-blend-mode: multiply;
+  border-radius: 12px;
+  height: 218px;
+  mix-blend-mode: normal;
+  opacity: 0.45;
+  position: absolute;
+  width: 375px;
 }
 
 .photo {
@@ -104,47 +121,40 @@ export default {
   width: 375px;
 }
 
-.text {
-  font-family: "proxima-nova";
-  font-size: 14px;
-  line-height: 16px;
-  color: #1bc98e;
-  position: absolute;
-  top: 30px;
-  left: 27px;
-  font-weight: 600;
-}
-
 .rating-container {
+  left: 27px;
   position: relative;
   top: -175px;
-  left: 27px;
 }
 
 .recipe-title {
-  width: 328px;
-  height: 52px;
+  color: #ffffff;
   font-family: "proxima-nova";
   font-size: 24px;
-  line-height: 26px;
-  color: #ffffff;
-  position: relative;
-  top: -175px;
-  left: 27px;
-  text-align: left;
   font-weight: 500;
+  height: 52px;
+  left: 27px;
+  line-height: 26px;
+  position: relative;
+  text-align: left;
+  top: -175px;
+  width: 328px;
+}
+
+.text {
+  color: #1bc98e;
+  font-family: "proxima-nova";
+  font-size: 14px;
+  font-weight: 600;
+  left: 27px;
+  line-height: 16px;
+  position: absolute;
+  top: 30px;
 }
 
 .time-calorie-container {
+  left: 23px;
   position: relative;
   top: -175px;
-  left: 23px;
-}
-
-.learn-more-button {
-  top: -160px;
-  right: 20px;
-  float: right;
-  position: relative;
 }
 </style>

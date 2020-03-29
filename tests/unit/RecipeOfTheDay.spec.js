@@ -1,40 +1,34 @@
 import { mount } from "@vue/test-utils";
-import PremiumRecipeCard from "../../src/components/PremiumRecipeCard";
-import TimeCalorieInfo from "../../src/components/TimeCalorieInfo";
-import NutritionalValue from "../../src/components/NutritionalValue";
+import RecipeOfTheDay from "../../src/components/RecipeOfTheDay";
 
 jest.mock("../../src/lib/assets-loader", () => () => "image");
 
-describe("PremiumRecipeCard.vue", () => {
-  const recipeTitle =
-    "Low Carb Thai Chicken Curry With Coconut Cauliflower Rice";
+describe("RecipeOfTheDay.vue", () => {
+  const recipeTitle = "Keto Italian Beef With Cabbage Noodles";
 
-  const wrapper = mount(PremiumRecipeCard, {
+  const wrapper = mount(RecipeOfTheDay, {
     propsData: {
-      calories: 489,
-      carbs: 20,
+      calories: 269,
+      carbs: 2,
       energyUnits: "calories",
-      fats: 6,
+      fats: 43,
       imageName: "image",
-      isHearted: false,
-      proteins: 16,
-      ratingCount: 200,
+      proteins: 26,
       recipeTitle,
-      score: 3.5,
-      time: 24
+      score: 5,
+      time: 8
     }
   });
 
   it("renders the component with all its main parts", () => {
     expect(wrapper.find(".card").exists()).toBe(true);
-    expect(wrapper.find(".premium-rectangle-container").exists()).toBe(true);
     expect(wrapper.find(".overlay").exists()).toBe(true);
-    expect(wrapper.find(".heart").exists()).toBe(true);
     expect(wrapper.find(".photo").exists()).toBe(true);
     expect(wrapper.find(".recipe-title").text()).toBe(recipeTitle);
     expect(wrapper.find(".rating-container").exists()).toBe(true);
-    expect(wrapper.find(".info-line").contains(TimeCalorieInfo)).toBe(true);
-    expect(wrapper.find(".info-line").contains(NutritionalValue)).toBe(true);
+    expect(wrapper.find(".nutritional-value-container").exists()).toBe(true);
+    expect(wrapper.find(".time-calorie-container").exists()).toBe(true);
+    expect(wrapper.find(".learn-more-button").exists()).toBe(true);
   });
 
   describe("on mouse hover", () => {
