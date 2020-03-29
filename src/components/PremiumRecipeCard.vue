@@ -106,7 +106,6 @@ export default {
 }
 
 .info-line {
-  align-content: space-between;
   display: flex;
   margin-left: 15px;
   margin-top: 8px;

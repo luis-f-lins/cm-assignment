@@ -95,7 +95,7 @@ export default {
   float: right;
   position: relative;
   right: 20px;
-  top: -160px;
+  top: -165px;
 }
 
 .nutritional-value-container {

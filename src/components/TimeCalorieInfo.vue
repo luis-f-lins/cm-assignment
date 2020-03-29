@@ -5,17 +5,17 @@
         alt="Time"
         class="svg"
         src="../assets/clock.svg"
-        v-if="chosenStyle === 'style1'"
+        v-if="!chosenStyle || chosenStyle === 'style1'"
       />
       <div class="info-text" :style="textStyle">{{ formattedTime }}</div>
     </div>
-    <span class="middle-dot">·</span>
+    <span class="middle-dot" v-if="chosenStyle === 'style2'">·</span>
     <div class="info" v-if="calories" id="calories">
       <img
         alt="Calories"
         class="svg"
         src="../assets/calories.svg"
-        v-if="chosenStyle === 'style1'"
+        v-if="!chosenStyle || chosenStyle === 'style1'"
       />
       <div class="info-text" :style="textStyle">{{ formattedCalories }}</div>
     </div>
@@ -44,7 +44,7 @@ export default {
       }
     },
     textStyle() {
-      return this.chosenStyle == "style1"
+      return !this.chosenStyle || this.chosenStyle == "style1"
         ? "{;color: #393c40; margin-left: 4px; font-size: 12px; margin-left: 5px; margin-right: 15px;}"
         : "{;margin-left: 6px; color: #ffffff; font-size: 14px;}";
     }

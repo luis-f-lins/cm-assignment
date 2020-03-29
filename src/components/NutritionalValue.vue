@@ -17,7 +17,7 @@ export default {
   props: ["carbs", "fats", "proteins", "chosenStyle"],
   computed: {
     textStyle() {
-      return this.chosenStyle == "style1"
+      return !this.chosenStyle || this.chosenStyle == "style1"
         ? "{;color: #393c40; margin-left: 4px; font-size: 12px;}"
         : "{;margin-left: 6px; color: #ffffff; font-size: 14px; font-weight: 400;}";
     }

@@ -48,7 +48,12 @@ export default {
   methods: {
     setStars: function(score) {
       if (score > 5) {
-        this.stars = ["filled", "filled", "filled", "filled", "filled"];
+        this.stars = Array(5).fill("filled");
+        return;
+      }
+
+      if (score < 0) {
+        this.stars = Array(5).fill("unfilled");
         return;
       }
 

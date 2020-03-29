@@ -29,7 +29,7 @@ export default {
   font-family: "proxima-nova";
   font-size: 12px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.2px;
   line-height: 12px;
   margin-left: 4px;
