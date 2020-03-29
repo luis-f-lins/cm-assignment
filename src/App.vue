@@ -98,7 +98,6 @@ export default {
 
 .premium-recipe-wrapper {
   margin-top: 50px;
-  margin-bottom: 100px;
 }
 
 .recipe-of-the-day {
