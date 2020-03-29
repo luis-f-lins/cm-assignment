@@ -9,17 +9,30 @@
 
       <div class="premium-recipe-wrapper">
         <PremiumRecipeCard
-          v-bind:calories="this.calories"
-          v-bind:carbs="this.carbs"
-          v-bind:time="this.time"
+          v-bind:calories="this.calories[0]"
+          v-bind:carbs="this.carbs[0]"
+          v-bind:time="this.time[0]"
           v-bind:energyUnits="this.energyUnits"
-          v-bind:fats="this.fats"
-          v-bind:imageName="this.imageName"
+          v-bind:fats="this.fats[0]"
+          v-bind:imageName="this.imageNames[0]"
           v-bind:isHearted="this.isHearted"
-          v-bind:proteins="this.proteins"
+          v-bind:proteins="this.proteins[0]"
           v-bind:ratingCount="this.ratingCount"
-          v-bind:recipeTitle="this.recipeTitle"
-          v-bind:score="this.score"
+          v-bind:recipeTitle="this.recipeTitles[0]"
+          v-bind:score="this.scores[0]"
+        />
+      </div>
+      <div class="recipe-of-the-day">
+        <RecipeOfTheDay
+          v-bind:calories="this.calories[1]"
+          v-bind:carbs="this.carbs[1]"
+          v-bind:time="this.time[1]"
+          v-bind:energyUnits="this.energyUnits"
+          v-bind:fats="this.fats[1]"
+          v-bind:imageName="this.imageNames[1]"
+          v-bind:proteins="this.proteins[1]"
+          v-bind:recipeTitle="this.recipeTitles[1]"
+          v-bind:score="this.scores[1]"
         />
       </div>
     </div>
@@ -28,25 +41,30 @@
 
 <script>
 import PremiumRecipeCard from "./components/PremiumRecipeCard.vue";
+import RecipeOfTheDay from "./components/RecipeOfTheDay.vue";
 
 export default {
   name: "App",
   components: {
-    PremiumRecipeCard
+    PremiumRecipeCard,
+    RecipeOfTheDay
   },
   data: function() {
     return {
-      calories: 489,
-      imageName: "image",
-      carbs: 20,
-      time: 24,
+      calories: [489, 269],
+      imageNames: ["image", "image-2"],
+      carbs: [20, 2],
+      time: [24, 8],
       energyUnits: "calories",
-      fats: 6,
+      fats: [6, 43],
       isHearted: false,
-      proteins: 16,
+      proteins: [16, 26],
       ratingCount: 200,
-      recipeTitle: "Low Carb Thai Chicken Curry With Coconut Cauliflower Rice",
-      score: 3.5
+      recipeTitles: [
+        "Low Carb Thai Chicken Curry With Coconut Cauliflower Rice",
+        "Keto Italian Beef With Cabbage Noodles"
+      ],
+      scores: [3.5, 5]
     };
   }
 };
@@ -79,6 +97,11 @@ export default {
 }
 
 .premium-recipe-wrapper {
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.recipe-of-the-day {
   margin-top: 50px;
   margin-bottom: 100px;
 }

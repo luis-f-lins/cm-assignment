@@ -17,7 +17,7 @@ describe("Ratings.vue", () => {
     wrapper.vm.$nextTick(() => {
       expect(wrapper.findAll("img").length).toBe(5);
     });
-    expect(wrapper.find(".ratingCount").exists()).toBe(true);
+    expect(wrapper.find(".rating-count").exists()).toBe(true);
   });
 
   describe("when showRatingCount is set to false", () => {
@@ -30,7 +30,7 @@ describe("Ratings.vue", () => {
     });
 
     it("does not render rating count", () => {
-      expect(wrapper.find(".ratingCount").exists()).toBe(false);
+      expect(wrapper.find(".rating-count").exists()).toBe(false);
     });
   });
 

@@ -11,7 +11,7 @@ describe("TimeCalorieInfo.vue", () => {
       }
     });
     expect(wrapper.findAll(".svg").length).toBe(2);
-    expect(wrapper.findAll(".infoText").length).toBe(2);
+    expect(wrapper.findAll(".info-text").length).toBe(2);
   });
 
   describe("when the selected energy unit is kilojaules", () => {

@@ -13,7 +13,7 @@
         v-if="item == 'half-filled'"
       />
     </span>
-    <span class="ratingCount" v-if="showRatingCount">{{
+    <span class="rating-count" v-if="ratingCount && showRatingCount">{{
       formattedRatingCount
     }}</span>
   </div>
@@ -71,7 +71,7 @@ export default {
 </script>
 
 <style>
-.ratingCount {
+.rating-count {
   color: #1ca677;
   font-family: "proxima-nova";
   font-size: 14px;

@@ -1,7 +1,7 @@
 <template>
-  <div class="premiumRectangle">
-    <img alt="Premium" class="premiumTrophy" src="../assets/trophy.svg" />
-    <div class="premiumText">Premium Recipe</div>
+  <div class="premium-rectangle">
+    <img alt="Premium" class="premium-trophy" src="../assets/trophy.svg" />
+    <div class="premium-text">Premium Recipe</div>
   </div>
 </template>
 
@@ -12,7 +12,7 @@ export default {
 </script>
 
 <style>
-.premiumRectangle {
+.premium-rectangle {
   align-items: center;
   background: #ffffff;
   background-color: rgba(255, 255, 255, 0.3);
@@ -24,7 +24,7 @@ export default {
   width: 117px;
 }
 
-.premiumText {
+.premium-text {
   color: rgba(255, 255, 255, 1);
   font-family: "proxima-nova";
   font-size: 12px;
@@ -35,7 +35,7 @@ export default {
   margin-left: 4px;
 }
 
-.premiumTrophy {
+.premium-trophy {
   height: 12px;
   width: 12px;
 }

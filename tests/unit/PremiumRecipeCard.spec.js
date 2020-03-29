@@ -24,22 +24,21 @@ describe("PremiumRecipeCard.vue", () => {
   });
 
   it("renders the component with all its main parts", () => {
-    expect(wrapper.find(".rectangle").exists()).toBe(true);
-    expect(wrapper.find(".premiumRectangleContainer").exists()).toBe(true);
+    expect(wrapper.find(".card").exists()).toBe(true);
+    expect(wrapper.find(".premium-rectangle-container").exists()).toBe(true);
     expect(wrapper.find(".overlay").exists()).toBe(true);
     expect(wrapper.find(".heart").exists()).toBe(true);
     expect(wrapper.find(".photo").exists()).toBe(true);
-    expect(wrapper.find(".recipeTitle").text()).toBe(recipeTitle);
-    expect(wrapper.find(".ratingContainer").exists()).toBe(true);
-    expect(wrapper.find(".timeCalorieInfo").exists()).toBe(true);
-    expect(wrapper.find(".nutritionalValueContainer").exists()).toBe(true);
+    expect(wrapper.find(".recipe-title").text()).toBe(recipeTitle);
+    expect(wrapper.find(".rating-container").exists()).toBe(true);
+    expect(wrapper.findAll(".info-line").length).toBe(2);
   });
 
   describe("on mouse hover", () => {
     it("renders the hover overlay component", () => {
-      wrapper.find(".rectangle").trigger("mouseover");
+      wrapper.find(".card").trigger("mouseover");
       wrapper.vm.$nextTick(() => {
-        expect(wrapper.find(".hoverOverlay").exists()).toBe(true);
+        expect(wrapper.find(".hover-overlay").exists()).toBe(true);
       });
     });
   });

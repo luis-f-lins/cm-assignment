@@ -11,6 +11,6 @@ describe("NutritionalValue.vue", () => {
       }
     });
     expect(wrapper.findAll(".circle").length).toBe(3);
-    expect(wrapper.findAll(".nutritionalValueText").length).toBe(3);
+    expect(wrapper.findAll(".nutritional-value-text").length).toBe(3);
   });
 });
